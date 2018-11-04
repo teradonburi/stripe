@@ -32,7 +32,6 @@ const testCards = {
 async function createCustomer(email, token) {
   const customer = await stripe.customers.create({
     email,
-    source: token, // obtained with Stripe.js
   })
 
   return customer
