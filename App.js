@@ -32,14 +32,19 @@ export default class App extends React.Component {
       <div>
         <h3>購買者アカウントの作成</h3>
         <CreateCustomerForm />
+        <hr/>
         <h3>購入者アカウントのクレジットカードの登録</h3>
         <RegistCardForm />
+        <hr/>
         <h3>販売者アカウントの作成</h3>
         <CreateProviderForm />
+        <hr/>
         <h3>販売者銀行口座の登録</h3>
         <RegistProviderBankAccountForm zenginCode={zenginCode}/>
+        <hr/>
         <h3>購入</h3>
         <ChargeFromCustomerToProviderForm />
+        <hr/>
       </div>
     )
   }
