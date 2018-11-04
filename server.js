@@ -235,21 +235,21 @@ app.post('/api/registProviderBankAccount', async (req, res) => {
       // かなはユーザに入力させるのは難しいと思うので、サーバ側で変換する
       address_kana: {
         country: 'JP',
-        postal_code, // Zip/Postal Code
+        postal_code, // 郵便番号
         state: address.prefectureKana, // 県
         city: address.cityKana, // 市区
-        town: address.townKana, // 街名
-        line1: line1.match(/[0-9０-９]/g).join('-'), // 丁目、番地、ビル番号
-        line2: '', // ビル詳細（optional）
+        town: address.townKana + line1.match(/[0-9０-９]/g) ? ` ${(line1.match(/[0-9０-９]/g) || [])[0]}-` : '', // 街名、 丁目
+        line1: (line1.match(/[0-9０-９]/g) || []).slice(1).join('-'), // 番地、号
+        line2: '', // 建物詳細（optional）
       },
       address_kanji: {
         country: 'JP',
         postal_code, // Zip/Postal Code
-        state, // Prefecture
-        city, // City/Ward
-        town, // Town
-        line1, // cho-me/Block/Building number
-        line2, // Building details (optional)
+        state, // 県
+        city, // 市区
+        town: address.townKana + line1.match(/[0-9０-９]/g) ? `　${(line1.match(/[0-9０-９]/g) || [])[0]}丁目` : '', //  街名、 丁目
+        line1: line1.match(/[0-9０-９]/g) ? line1.match(/[0-9０-９]/g).slice(1).reduce((sum, current, idx) => idx===0 ? sum+current+'番地': idx===1 ? sum+current+'号': sum+current, '') : '', // 番地、号
+        line2, // 建物詳細（optional）
       },
       // 生年月日
       dob: {
