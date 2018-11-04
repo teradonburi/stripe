@@ -1,4 +1,6 @@
-# web application template
+# Stripe Escrow
+
+Start with...
 
 ```
 $ yarn
