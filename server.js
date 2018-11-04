@@ -236,7 +236,7 @@ app.post('/api/registProviderBankAccount', async (req, res) => {
       address_kana: {
         country: 'JP',
         postal_code, // 郵便番号
-        state: address.prefectureKana, // 県
+        state: address.prefectureKana.replace(/ｯ/g, 'ﾂ').replace(/ｮ/g, 'ﾖ'), // 県
         city: address.cityKana, // 市区
         town: address.townKana + line1.match(/[0-9０-９]/g) ? ` ${(line1.match(/[0-9０-９]/g) || [])[0]}-` : '', // 街名、 丁目
         line1: (line1.match(/[0-9０-９]/g) || []).slice(1).join('-'), // 番地、号
