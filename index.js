@@ -90,7 +90,7 @@ const theme = createMuiTheme({
 const render = () => {
   ReactDOM.render(
     <MuiThemeProvider theme={theme}>
-      <StripeProvider apiKey='pk_test_rXJ9cXKFHZMrPTVyzb7g736y'>
+      <StripeProvider apiKey='pk_test_XXXXXXXXXXXX'>
         <Provider store={store}>
           <Router history={history}>
             <Switch>
